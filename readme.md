@@ -5,17 +5,6 @@ Tujuan utamanya adalah mengetahui persepsi pengguna (positif/negatif) berdasarka
 
 ---
 
-## 📂 Struktur Project
-sentiment-analysis-gojek/
-│
-├── scraping_reviews.py # kode scraping ulasan dari Google Play
-├── sentiment_analysis.ipynb # notebook training model
-├── gojek_reviews.csv # dataset hasil scraping
-├── requirements.txt # daftar dependensi Python
-└── README.md # dokumentasi project
-
----
-
 ## 🛠️ Teknologi yang Digunakan
 - **Python 3.13**
 - **Pandas**, **NumPy** → data processing
