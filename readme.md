@@ -43,8 +43,8 @@ The main goal is to understand user perception (positive/negative) based on thei
 ---
 
 ## 📊 Model Results
-- Logistic Regression: **Test Accuracy ~84.5%**
-- Linear SVM (tuned): **Test Accuracy ~88%**
+- Logistic Regression: **Test Accuracy ~88.3%**
+- Linear SVM (tuned): **Test Accuracy ~89.7%**
 
 The **tuned Linear SVM** model achieved the most stable and reliable performance with good accuracy.
 
