@@ -1,58 +1,58 @@
-# 📊 Sentiment Analysis of Gojek Application
+# 📊 Sentiment Analysis of Gojek App Reviews  
 
-This project performs **sentiment analysis** on user reviews of the **Gojek** application from the Google Play Store.  
-The main goal is to understand user perception (positive/negative) based on their reviews, using **Natural Language Processing (NLP)** and **Machine Learning**.
-
----
-
-## 🛠️ Technologies Used
-- **Python 3.13**
-- **Pandas**, **NumPy** → data processing
-- **NLTK**, **Sastrawi** → text preprocessing (tokenizing, stopwords, stemming)
-- **Scikit-learn** → TF-IDF, Logistic Regression, SVM, Ensemble
-- **Imbalanced-learn (SMOTE)** → dataset balancing
-- **Matplotlib, Seaborn, WordCloud** → data visualization
-- **google-play-scraper** → scraping reviews from Google Play
+This project performs **sentiment analysis** on user reviews of the **Gojek application** from Google Play Store.  
+The goal is to classify user perceptions into **positive** and **negative** categories using **NLP** and **Deep Learning (LSTM)**.  
 
 ---
 
-## 📑 Analysis Workflow
-1. **Data Scraping**  
-   Extracting Gojek app reviews from the Google Play Store using `google-play-scraper`.
-
-2. **Text Preprocessing**  
-   - Cleaning (remove numbers, symbols, URLs, mentions, etc.)  
-   - Case folding (lowercasing)  
-   - Tokenizing  
-   - Stopwords removal (Indonesian & English)  
-   - Stemming (Sastrawi)  
-   - Slangword normalization  
-
-3. **Feature Extraction**  
-   Converting text into numerical vectors using **TF-IDF Vectorizer**.
-
-4. **Modeling**  
-   - Logistic Regression  
-   - SVM (Support Vector Machine)
-
-5. **Evaluation**  
-   - Confusion Matrix  
-   - Precision, Recall, F1-Score  
-   - Accuracy
+## 🛠️ Technologies Used  
+- **Python 3.13**  
+- **Pandas**, **NumPy** → Data processing  
+- **NLTK**, **Sastrawi** → Text preprocessing (tokenizing, stopwords, stemming, lemmatization)  
+- **Scikit-learn** → Train-test split, evaluation metrics, label encoding 
+- **Matplotlib, Seaborn, WordCloud** → Data visualization  
+- **google-play-scraper** → Scraping reviews from Google Play  
+- **TensorFlow / Keras** → LSTM model for sentiment classification  
 
 ---
 
-## 📊 Model Results
-- Logistic Regression: **Test Accuracy ~88.3%**
-- Linear SVM (tuned): **Test Accuracy ~89.7%**
+## 📑 Workflow  
 
-The **tuned Linear SVM** model achieved the most stable and reliable performance with good accuracy.
+### 1. Data Collection  
+Reviews were scraped from Google Play using `google-play-scraper` and saved as `gojek_reviews.csv`.  
+
+### 2. Preprocessing  
+- Cleaning → remove numbers, links, mentions, hashtags, punctuation  
+- Case folding → lowercase transformation  
+- Slangword normalization → replace informal/slang words with standard Indonesian  
+- Tokenizing → split text into tokens  
+- Stopword removal → remove common Indonesian and English stopwords  
+- Stemming & Lemmatization →  
+  - Indonesian → Sastrawi stemmer  
+  - English → WordNet lemmatizer  
+
+### 3. Lexicon-based Sentiment Scoring (baseline)  
+Lexicon dictionaries (positive & negative words) were used to assign sentiment scores.  
+
+### 4. Feature Engineering for Deep Learning  
+- Convert text into sequences using **Tokenizer**  
+- Pad sequences to fixed length (`max_len=100`)  
+
+### 5. Modeling (LSTM)  
+- **Embedding Layer**: maps words into dense vectors  
+- **LSTM Layer**: captures sequential dependencies in reviews  
+- **Dense Layer** with sigmoid activation: binary classification (positive/negative)  
+
+### 6. Evaluation  
+- Confusion Matrix  
+- Precision, Recall, F1-score  
+- Accuracy  
 
 ---
 
-## 📥 How to Run
+## 📊 Results  
+- **LSTM model (5 epochs, batch_size=64):**  
+  - Accuracy: ~95% on test set (with ~13,700 balanced reviews)  
+  - Strong performance on both positive and negative classes  
 
-### 1. Clone the Repository
-```bash
-git clone https://github.com/RafifGantari/sentiment-analysis-gojek.git
-cd sentiment-analysis-gojek
+---

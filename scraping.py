@@ -6,7 +6,7 @@ result, _ = reviews(
     lang='id',
     country='id',
     sort=Sort.NEWEST,
-    count=5000
+    count=100000
 )
 
 df = pd.DataFrame(result)
